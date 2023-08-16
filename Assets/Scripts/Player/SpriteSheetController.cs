@@ -7,7 +7,11 @@ namespace Player
 {
     public class SpriteSheetController : MonoBehaviour
     {
+
         [SerializeField] Animator animator;
+        [SerializeField] Sprite[] stillSprites;
+        [SerializeField] SpriteRenderer characterSpriteRenderer;
+
 
         private void OnEnable()
         {
@@ -20,10 +24,20 @@ namespace Player
         private void ChangeSpriteSheetAnimation(Vector2 direction)
         {
 
+            if (direction == Vector2.zero)
+            {
+               animator.SetBool("IsWalking", false);
+               return;
+            }
+            animator.SetBool("IsWalking", true);
             animator.SetFloat("Axis_X", direction.x);
             animator.SetFloat("Axis_Y", direction.y);
-
+            
         }
+
+ 
+
+
     }
 }
 

@@ -8,7 +8,7 @@ namespace Player
         public Rigidbody2D playerRigidbody;
         public float movementSpeed = 5f;
         private Vector2 inputDirection;
-
+        public static string lastKeywordPressed;
         private void OnEnable()
         {
             playerRigidbody.gravityScale=0;
