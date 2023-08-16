@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 
 [RequireComponent(typeof(UIStoreController))]
 public class StoreController : MonoBehaviour
@@ -19,7 +20,8 @@ public class StoreController : MonoBehaviour
     public void BuyProduct()
     {
         purchaseManager.CreatePurchase(selectedProduct.ProductInfo);
-        UIStore.LaunchPromptToWearNewProduct();
+        Action OnPromptAcepted =UIStore.LaunchPromptToWearNewProduct(selectedProduct);
+        OnPromptAcepted += selectedProduct.Wear;
     }
     public void SelectProduct(ProductSO product)
     {
@@ -31,7 +33,6 @@ public class StoreController : MonoBehaviour
         CreateProducts();
         if(products.Count > 0)
         {
-            SelectProduct(products[0]); //Always select the first product from the list
             UIStore.BuyButton.onClick.AddListener(BuyProduct);
         }
        
@@ -56,7 +57,7 @@ public class StoreController : MonoBehaviour
 
     private void  AddProductInfo(IProduct productCreated, ProductSO productInfo)
     {
-        productCreated.ProductInfo = productInfo;
+        productCreated.FillInfo(productInfo);
     }
 
     private void SubscribeToProductEvents(IProduct product)
@@ -66,6 +67,12 @@ public class StoreController : MonoBehaviour
 
     private void SelectProduct(IProduct product)
     {
+        if (product == selectedProduct) return;
+
+        if(selectedProduct != null)
+        {
+            selectedProduct.Deselect(); //Deselect the actual selected product
+        }
         selectedProduct = product;
         UIStore.SelectProductUI(product);
     }

@@ -15,5 +15,5 @@ MonoBehaviour:
   iD: 323132
   productName: White Hat
   productPrice: 200
-  productIcon: {fileID: 0}
+  productIcon: {fileID: 1295623595, guid: 5958cf8761247ee448a780ce89ead696, type: 3}
   productAtlas: {fileID: 0}

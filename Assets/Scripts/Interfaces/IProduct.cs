@@ -7,7 +7,10 @@ public interface IProduct
 {
     public Action<IProduct> OnSelected { get; set; }
 
-    ProductSO ProductInfo { get; set; }
+    ProductSO ProductInfo { get; }
     public void Wear();
+    public void Select();
+    public void Deselect();
+    public void FillInfo(ProductSO productInfo);
 
 }
