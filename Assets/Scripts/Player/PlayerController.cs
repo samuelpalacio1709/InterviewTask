@@ -23,7 +23,7 @@ namespace Player
             Vector3 movement = inputDirection * movementSpeed;
             playerRigidbody.velocity = movement;
         }
-
+       
         private void ChangePlayerDirection(Vector2 direction)
         {
             inputDirection = direction;
