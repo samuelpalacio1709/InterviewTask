@@ -19,7 +19,6 @@ namespace Player
             input.Player.Movement.canceled += HandleInputCanceled;
 
         }
-
         private void OnDisable()
         {
             input.Disable();
