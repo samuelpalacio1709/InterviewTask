@@ -9,5 +9,13 @@ public class ProductSO : ScriptableObject
     public string productName;
     public float productPrice;
     public Sprite productIcon;
-    public Sprite productAtlas;
+    public Texture productAtlas;
+    public Type productType;
+    public enum Type
+    {
+        Head,
+        Chest,
+        Legs,
+        Foot
+    }
 }

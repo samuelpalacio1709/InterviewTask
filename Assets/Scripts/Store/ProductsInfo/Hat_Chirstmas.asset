@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4755cc85e961178429fc58ac22d94f2c, type: 3}
-  m_Name: Hat_White
+  m_Name: Hat_Chirstmas
   m_EditorClassIdentifier: 
   iD: 323132
   productName: White Hat
   productPrice: 200
-  productIcon: {fileID: 1295623595, guid: 5958cf8761247ee448a780ce89ead696, type: 3}
-  productAtlas: {fileID: 0}
+  productIcon: {fileID: 1998399328, guid: 3e063e17dfd71e54da17bcd947b8747e, type: 3}
+  productAtlas: {fileID: 2800000, guid: 3e063e17dfd71e54da17bcd947b8747e, type: 3}
+  productType: 0

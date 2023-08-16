@@ -6,16 +6,14 @@ using UnityEngine;
 public class PurchaseManager : Singleton<PurchaseManager>
 {
 
-    private List<Purchase> purchasedItems = new List<Purchase>();
+    private Stack<Purchase> purchasedItems = new Stack<Purchase>();
     private Purchase lastPurchase;
 
-    public Purchase LastPurchase => lastPurchase;
+    public Purchase LastPurchase => purchasedItems.Peek();
 
-    public void CreatePurchase(ProductSO productInfo)
+    public void CreatePurchase(IProduct product)
     {
-        Debug.Log("New purchase");
-        var purchase = new Purchase(productInfo.iD);
-        lastPurchase = purchase;
-        purchasedItems.Add(purchase);
+        var purchase = new Purchase(product.ProductInfo);
+        purchasedItems.Push(purchase);
     }
 }

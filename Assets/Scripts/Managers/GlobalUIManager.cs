@@ -14,8 +14,12 @@ public class GlobalUIManager : Singleton<GlobalUIManager>
     [SerializeField] Image promptImage;
     [SerializeField] Button confirmPromptButton;
     [SerializeField] Button cancelPromptButton;
-    private Action OnPromptAcepted;
-
+    [SerializeField] PromptHandler promptHandler;
+    private PromptType actualPromptType= PromptType.Wear;
+    public enum PromptType
+    {
+        Wear
+    }
 
     private void OnEnable()
     {
@@ -30,22 +34,23 @@ public class GlobalUIManager : Singleton<GlobalUIManager>
     }
 
 
-    public Action ShowPrompt(string text, Sprite icon)
+    public void ShowPrompt(string text, Sprite icon, PromptType promptType = PromptType.Wear)
     {
         promptCanvasObject.gameObject.SetActive(true);
         promptText.text = text;
         promptImage.sprite = icon;
-        OnPromptAcepted =null;
-        return OnPromptAcepted;
+        actualPromptType = promptType;
     }
 
     public void AcceptPrompt()
     {
-        OnPromptAcepted?.Invoke();
-        OnPromptAcepted = null;
+        promptHandler.HandlePromptAccepted(actualPromptType);
+        promptCanvasObject.gameObject.SetActive(false);
     }
     public void CancelPrompt()
     {
-        OnPromptAcepted = null;
+
     }
+
+  
 }

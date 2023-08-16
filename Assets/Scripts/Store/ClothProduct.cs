@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(UIProductController))]
-public class HeadProduct : MonoBehaviour, IProduct
+public class ClothProduct : MonoBehaviour, IProduct
 {
     public Action<IProduct> onSelected;
     [SerializeField] ProductSO productInfo;
@@ -22,14 +22,9 @@ public class HeadProduct : MonoBehaviour, IProduct
         set => onSelected = value;
     }
 
-
     private void OnEnable()
     {
         button.onClick.AddListener(Select);
-    }
-    public void Wear()
-    {
-        throw new System.NotImplementedException();
     }
 
     public void Select()

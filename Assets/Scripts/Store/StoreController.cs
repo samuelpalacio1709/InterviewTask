@@ -8,8 +8,8 @@ using System;
 public class StoreController : MonoBehaviour
 {
     [SerializeField] UIStoreController UIStore;
-    [SerializeField] ProductSO[] AllProductsInfo;
-
+    [SerializeField] ProductSO[] availableProducts;
+    private WearablesManager wearablesManager => WearablesManager.Instance;
     private PurchaseManager purchaseManager => PurchaseManager.Instance;
     private List<IProduct> products = new List<IProduct>();
     private IProduct selectedProduct;
@@ -19,9 +19,9 @@ public class StoreController : MonoBehaviour
     }
     public void BuyProduct()
     {
-        purchaseManager.CreatePurchase(selectedProduct.ProductInfo);
-        Action OnPromptAcepted =UIStore.LaunchPromptToWearNewProduct(selectedProduct);
-        OnPromptAcepted += selectedProduct.Wear;
+        purchaseManager.CreatePurchase(selectedProduct);
+        UIStore.LaunchPromptToWearNewProduct(selectedProduct);
+        wearablesManager.CreateWearable(selectedProduct.ProductInfo.iD);
     }
     public void SelectProduct(ProductSO product)
     {
@@ -40,12 +40,11 @@ public class StoreController : MonoBehaviour
   
     public void CreateProducts()
     {
-        foreach (var productInfo in AllProductsInfo)
+        foreach (var productInfo in availableProducts)
         {
             GameObject newProduct = UIStore.CreateNewProduct();
             IProduct productCreated;
             newProduct.TryGetComponent<IProduct>(out productCreated);
-
             if (newProduct == null) continue;
 
             AddProductInfo(productCreated, productInfo);

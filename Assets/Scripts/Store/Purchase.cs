@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Purchase
 {
-    public string productID;
-    public Purchase(string id)
+    
+    public ProductSO productInfo;
+    public Purchase(ProductSO productInfo)
     {
-        productID = id;
+        this.productInfo = productInfo;
     }
 }

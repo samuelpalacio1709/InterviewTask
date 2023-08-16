@@ -33,10 +33,10 @@ public class UIStoreController : MonoBehaviour
     }
 
     //Show propmt to encorage user to wear the purchased item
-    public Action LaunchPromptToWearNewProduct(IProduct product)
+    public void LaunchPromptToWearNewProduct(IProduct product)
     {
         string message = onPurchasedItemText.Replace("@product", product.ProductInfo.productName);
         storeCanvasObject.SetActive(false);
-        return globalUIManager.ShowPrompt(message, product.ProductInfo.productIcon);
+        globalUIManager.ShowPrompt(message, product.ProductInfo.productIcon);
     }
 }

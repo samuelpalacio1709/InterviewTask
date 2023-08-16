@@ -73,6 +73,7 @@ namespace Player
             Vector2 newOffset = new Vector2((int)animationState*SpriteFrameSizeX,
                                             (spriteSheetSize.y-1) * SpriteFrameSizeY);
             baseMaterial.SetTextureOffset("_BaseMap", newOffset);
+           
         }
 
         private void StartAnimation()
@@ -98,7 +99,6 @@ namespace Player
                 var actualTextureOffset = baseMaterial.GetTextureOffset("_BaseMap");
                 newOffset = new Vector2(actualTextureOffset.x + SpriteFrameSizeX, yOffset * SpriteFrameSizeY);
 
-                //Restart animation when six frames have been rendered
                 if (newOffset.x >= SpriteFrameSizeX * totalFramesPerAnimation)
                      newOffset = new Vector2(0, yOffset * SpriteFrameSizeY);
 
