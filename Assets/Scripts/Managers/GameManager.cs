@@ -8,5 +8,5 @@ using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
-    
+    public Transform playerTranform;
 }
