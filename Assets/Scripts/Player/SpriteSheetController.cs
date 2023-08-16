@@ -17,7 +17,7 @@ namespace Player
         private Coroutine spriteAnimationsCoroutine;
         private bool animate=true;
         private AnimationState animationState = AnimationState.Down;
-
+        private string textureName = "_MainTex";
 
         private float AnimationDuration => 1f / animationFramesPerSecond;
         private float SpriteFrameSizeX => 1f / spriteSheetSize.x;
@@ -72,7 +72,7 @@ namespace Player
             //Take animation spriteSheet to the IDLE animations
             Vector2 newOffset = new Vector2((int)animationState*SpriteFrameSizeX,
                                             (spriteSheetSize.y-1) * SpriteFrameSizeY);
-            baseMaterial.SetTextureOffset("_BaseMap", newOffset);
+            baseMaterial.SetTextureOffset(textureName, newOffset);
            
         }
 
@@ -96,13 +96,13 @@ namespace Player
                
                 yield return new WaitForSeconds(AnimationDuration);
 
-                var actualTextureOffset = baseMaterial.GetTextureOffset("_BaseMap");
+                var actualTextureOffset = baseMaterial.GetTextureOffset(textureName);
                 newOffset = new Vector2(actualTextureOffset.x + SpriteFrameSizeX, yOffset * SpriteFrameSizeY);
 
                 if (newOffset.x >= SpriteFrameSizeX * totalFramesPerAnimation)
                      newOffset = new Vector2(0, yOffset * SpriteFrameSizeY);
 
-                baseMaterial.SetTextureOffset("_BaseMap", newOffset);
+                baseMaterial.SetTextureOffset(textureName, newOffset);
 
             }
         }
