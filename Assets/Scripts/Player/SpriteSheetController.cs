@@ -3,13 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 namespace Player
 {
     public class SpriteSheetController : MonoBehaviour
     {
+        [SerializeField] Animator animator;
 
-        public Animator animator;
         private void OnEnable()
         {
             PlayerInputHandler.OnInput += ChangeSpriteSheetAnimation;
@@ -20,8 +19,10 @@ namespace Player
         }
         private void ChangeSpriteSheetAnimation(Vector2 direction)
         {
+
             animator.SetFloat("Axis_X", direction.x);
             animator.SetFloat("Axis_Y", direction.y);
+
         }
     }
 }
