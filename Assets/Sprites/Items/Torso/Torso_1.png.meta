@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3e063e17dfd71e54da17bcd947b8747e
+guid: 6f671b203a7ad0b4b9334359046fab1a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,34 +104,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ChirstmasHat_0
+      name: Torso_1_0
       rect:
         serializedVersion: 2
-        x: 253
+        x: 255
         y: 448
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0aae18e711d9d9944a75bbb7560ade54
-      internalID: 1998399328
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ChirstmasHat_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 512
-        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,8 +118,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0cc0bed314f2fae48a39ceed69a6875e
-      internalID: 304680567
+      spriteID: d45ba2975e23fa8449e48e13d3a10ce4
+      internalID: 1583245781
       vertices: []
       indices: 
       edges: []
@@ -156,8 +135,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ChirstmasHat_1: 304680567
-      ChirstmasHat_0: 1998399328
+      Torso_1_0: 1583245781
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

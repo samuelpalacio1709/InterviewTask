@@ -108,6 +108,8 @@ namespace Player
             }
         }
 
+
+        //Take the player to the IDLE POSE
         public void RestartSpriteSheet()
         {
             Vector2 newOffset = new Vector2(SpriteFrameSizeX *3,

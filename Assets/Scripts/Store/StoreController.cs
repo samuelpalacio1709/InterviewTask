@@ -122,9 +122,14 @@ public class StoreController : MonoBehaviour
         {
             selectedOption.Deselect();
         }
+        if (selectedProduct != null)
+        {
+            selectedProduct.Deselect();
+        }
         selectedOption = option;
         selectedOption.Select();
         UpgradeProductsSection();
+        wearablesManager.MatchClothes();
     }
 
     private void UpgradeProductsSection()

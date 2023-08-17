@@ -1038,7 +1038,13 @@ MonoBehaviour:
   UIStore: {fileID: 394575473}
   availableProducts:
   - {fileID: 11400000, guid: b8638c383a4f743498b43f9b97d3ba3a, type: 2}
-  - {fileID: 11400000, guid: b53c056088c0a3547bf6f2255558c84b, type: 2}
+  - {fileID: 11400000, guid: 78d136952d9a15840b91d34afdf97b24, type: 2}
+  - {fileID: 11400000, guid: 1b70c6b81032a2c4195b83ab7f19b69d, type: 2}
+  - {fileID: 11400000, guid: ce501f765ac3478429f75283160259db, type: 2}
+  - {fileID: 11400000, guid: d122c745685966d46b98307b44bbfe8e, type: 2}
+  - {fileID: 11400000, guid: 8d9e57cbead14a6448d5219bb368516e, type: 2}
+  - {fileID: 11400000, guid: 1e48d096a9e208347b87fa0edb41daf3, type: 2}
+  - {fileID: 11400000, guid: f7d408384c8b3cb4aa577bd849d0dfd3, type: 2}
   options:
   - {fileID: 6042390498536048989}
   - {fileID: 1544058708653818171}
@@ -4011,7 +4017,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   products:
   - {fileID: 11400000, guid: b8638c383a4f743498b43f9b97d3ba3a, type: 2}
-  - {fileID: 11400000, guid: b53c056088c0a3547bf6f2255558c84b, type: 2}
+  - {fileID: 11400000, guid: 78d136952d9a15840b91d34afdf97b24, type: 2}
+  - {fileID: 11400000, guid: 1b70c6b81032a2c4195b83ab7f19b69d, type: 2}
+  - {fileID: 11400000, guid: ce501f765ac3478429f75283160259db, type: 2}
+  - {fileID: 11400000, guid: d122c745685966d46b98307b44bbfe8e, type: 2}
+  - {fileID: 11400000, guid: 8d9e57cbead14a6448d5219bb368516e, type: 2}
+  - {fileID: 11400000, guid: 1e48d096a9e208347b87fa0edb41daf3, type: 2}
+  - {fileID: 11400000, guid: f7d408384c8b3cb4aa577bd849d0dfd3, type: 2}
   characterClothesMaterials:
   - {fileID: 2100000, guid: 035166ba58463b240ac939750a46dbd2, type: 2}
   - {fileID: 2100000, guid: d63cea7b4c050b14199061f2f36458f1, type: 2}

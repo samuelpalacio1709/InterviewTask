@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4755cc85e961178429fc58ac22d94f2c, type: 3}
-  m_Name: Hat_Chirstmas
+  m_Name: Cap
   m_EditorClassIdentifier: 
-  iD: 21421525
-  productName: Christmas
+  iD: 616236
+  productName: Cap
   productPrice: 10
-  productIcon: {fileID: 1448878218, guid: a614c0c92e4402643879d0138cca6caa, type: 3}
-  productAtlas: {fileID: 2800000, guid: a614c0c92e4402643879d0138cca6caa, type: 3}
+  productIcon: {fileID: -189779053, guid: 9aeedbaae9bb9c94fa6182c4b3bd6a1e, type: 3}
+  productAtlas: {fileID: 2800000, guid: 9aeedbaae9bb9c94fa6182c4b3bd6a1e, type: 3}
   productType: 0
