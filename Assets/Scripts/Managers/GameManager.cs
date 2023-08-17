@@ -10,6 +10,10 @@ public class GameManager : Singleton<GameManager>
 {
     public Transform playerTranform;
     public GameState gameState= GameState.Free;
+    private float totalCoins=0;
+
+    public float TotalCoins { get => totalCoins; }
+
     public enum GameState
     {
         Free,
@@ -19,5 +23,11 @@ public class GameManager : Singleton<GameManager>
     {
         Debug.Log("----StateChanged----");
         this.gameState = gameState;
+    }
+
+    public float IncreaseCoins(float coinValue)
+    {
+        totalCoins += coinValue;
+        return totalCoins;
     }
 }

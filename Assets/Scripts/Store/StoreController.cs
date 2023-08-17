@@ -12,6 +12,7 @@ public class StoreController : MonoBehaviour
     [SerializeField] private GameObject[] options;
     private WearablesManager wearablesManager => WearablesManager.Instance;
     private PurchaseManager purchaseManager => PurchaseManager.Instance;
+    private GameManager gameManager => GameManager.Instance;
     private List<IProduct> products = new List<IProduct>();
     private List<IStoreOption> storeOptions = new List<IStoreOption>();
     private IProduct selectedProduct;
@@ -26,6 +27,12 @@ public class StoreController : MonoBehaviour
     }
     public void BuyProduct()
     {
+        if (selectedProduct.ProductInfo.productPrice > gameManager.TotalCoins)
+        {
+            UIStore.ShowRejectPurchaseText(true);
+            return;
+        }
+
         purchaseManager.CreatePurchase(selectedProduct);
         UIStore.LaunchPromptToWearNewProduct(selectedProduct);
         wearablesManager.CreateWearable(selectedProduct.ProductInfo.iD);
@@ -52,6 +59,7 @@ public class StoreController : MonoBehaviour
     public void CloseStore()
     {
         OnStoreClosed?.Invoke();
+        UIStore.ShowRejectPurchaseText(false);
 
     }
 

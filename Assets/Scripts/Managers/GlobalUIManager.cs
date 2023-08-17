@@ -21,6 +21,10 @@ public class GlobalUIManager : Singleton<GlobalUIManager>
     [SerializeField] GameObject stickyMessageCanvasObject;
     [SerializeField] TMP_Text stickyMessage;
 
+
+    [Header("Coins")]
+    [SerializeField] TMP_Text coinsText;
+
     private PromptType actualPromptType = PromptType.Wear;
 
 
@@ -69,6 +73,11 @@ public class GlobalUIManager : Singleton<GlobalUIManager>
     public void HideStickyMessage()
     {
         stickyMessageCanvasObject.gameObject.SetActive(false);
+    }
+
+    public void UpdateCoinsUI(float coins)
+    {
+        coinsText.text = coins.ToString();
     }
 
 }

@@ -9,6 +9,7 @@ public class UIStoreController : MonoBehaviour
 {
     [SerializeField] public Button closeButton;
     [SerializeField] private TMP_Text priceText;
+    [SerializeField] private TMP_Text rejectedText;
     [SerializeField] private TMP_Text productNameText;
     [SerializeField] private Image productImage;
     [SerializeField] private GameObject productPrefab;
@@ -38,6 +39,7 @@ public class UIStoreController : MonoBehaviour
 
     public void SetPriceText(float price)
     {
+        priceText.overrideColorTags = true;
         priceText.text = price.ToString();
     }
     public GameObject CreateNewProduct()
@@ -63,4 +65,10 @@ public class UIStoreController : MonoBehaviour
     {
         storeCanvasObject.gameObject.SetActive(true);   
     }
+
+    public void ShowRejectPurchaseText(bool state)
+    {
+        rejectedText.gameObject.SetActive(state);
+    }
+  
 }
