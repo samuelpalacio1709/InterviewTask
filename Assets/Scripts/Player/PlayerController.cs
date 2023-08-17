@@ -8,18 +8,24 @@ namespace Player
         public Rigidbody2D playerRigidbody;
         public float movementSpeed = 5f;
         private Vector2 inputDirection;
-        public static string lastKeywordPressed;
+        public GameManager gameManager => GameManager.Instance;
+
         private void OnEnable()
         {
             playerRigidbody.gravityScale=0;
-            PlayerInputHandler.OnInput += ChangePlayerDirection;
+            PlayerInputHandler.OnInputMovement += ChangePlayerDirection;
         }
         private void OnDisable()
         {
-            PlayerInputHandler.OnInput -= ChangePlayerDirection;
+            PlayerInputHandler.OnInputMovement -= ChangePlayerDirection;
         }
         private void Update()
         {
+            if (gameManager.gameState == GameManager.GameState.Shopping) 
+            {
+                playerRigidbody.velocity = Vector2.zero;
+                return;
+            }
             Vector3 movement = inputDirection * movementSpeed;
             playerRigidbody.velocity = movement;
         }

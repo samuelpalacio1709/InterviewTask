@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Product", menuName = "Products/Create a new product")]
 public class ProductSO : ScriptableObject
 {
+    public MaterialsSO materialGroup; //materialGroup To Try Clothes
     public string iD;
     public string productName;
     public float productPrice;

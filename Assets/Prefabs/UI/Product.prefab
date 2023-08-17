@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1291084856585895934}
   - component: {fileID: 1291084856585895680}
-  - component: {fileID: 1291084856585895683}
   - component: {fileID: 1291084856585895682}
   - component: {fileID: 3823548281804814681}
+  - component: {fileID: 8348123606246334443}
   m_Layer: 5
   m_Name: Product
   m_TagString: Untagged
@@ -51,21 +51,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1291084856585895935}
   m_CullTransparentMesh: 1
---- !u!114 &1291084856585895683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1291084856585895935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fcba9988a2c51848aad1df46b29aac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  productInfo: {fileID: 0}
-  button: {fileID: 1291084856585895682}
-  UIProductController: {fileID: 3823548281804814681}
 --- !u!114 &1291084856585895682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +109,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   productImage: {fileID: 2668417131079542524}
   selectedBorderImage: {fileID: 8135552311201251700}
+--- !u!114 &8348123606246334443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291084856585895935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef0a242c05ed8740b9846ef9967abc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productInfo: {fileID: 0}
+  button: {fileID: 1291084856585895682}
+  UIProductController: {fileID: 3823548281804814681}
 --- !u!1 &1538646935440678867
 GameObject:
   m_ObjectHideFlags: 0

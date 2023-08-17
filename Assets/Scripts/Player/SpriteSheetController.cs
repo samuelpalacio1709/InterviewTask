@@ -32,12 +32,12 @@ namespace Player
         }
         private void OnEnable()
         {
-            PlayerInputHandler.OnInput += ChangeSpriteSheetAnimation;
+            PlayerInputHandler.OnInputMovement += ChangeSpriteSheetAnimation;
       
          }
         private void OnDisable()
         {
-            PlayerInputHandler.OnInput -= ChangeSpriteSheetAnimation;
+            PlayerInputHandler.OnInputMovement -= ChangeSpriteSheetAnimation;
         }
         private void ChangeSpriteSheetAnimation(Vector2 direction)
         {

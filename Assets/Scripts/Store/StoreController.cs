@@ -9,13 +9,18 @@ public class StoreController : MonoBehaviour
 {
     [SerializeField] UIStoreController UIStore;
     [SerializeField] ProductSO[] availableProducts;
+    [SerializeField] private GameObject[] options;
     private WearablesManager wearablesManager => WearablesManager.Instance;
     private PurchaseManager purchaseManager => PurchaseManager.Instance;
     private List<IProduct> products = new List<IProduct>();
+    private List<IStoreOption> storeOptions = new List<IStoreOption>();
     private IProduct selectedProduct;
-    private void Start()
+    private IStoreOption selectedOption;
+    public Action OnStoreClosed;
+    public void Start()
     {
-        OpenStore();
+        CreateProducts();
+        SubscribeToStoreOptionEvents();
     }
     public void BuyProduct()
     {
@@ -30,14 +35,23 @@ public class StoreController : MonoBehaviour
 
     public void OpenStore()
     {
-        CreateProducts();
+        
         if(products.Count > 0)
         {
             UIStore.BuyButton.onClick.AddListener(BuyProduct);
+            UIStore.Show();
+            UIStore.closeButton.onClick.AddListener(CloseStore);
+
         }
-       
+
     }
-  
+
+    public void CloseStore()
+    {
+        OnStoreClosed?.Invoke();
+
+    }
+
     public void CreateProducts()
     {
         foreach (var productInfo in availableProducts)
@@ -54,6 +68,7 @@ public class StoreController : MonoBehaviour
 
     }
 
+
     private void  AddProductInfo(IProduct productCreated, ProductSO productInfo)
     {
         productCreated.FillInfo(productInfo);
@@ -62,6 +77,21 @@ public class StoreController : MonoBehaviour
     private void SubscribeToProductEvents(IProduct product)
     {
         product.OnSelected += SelectProduct;
+    }
+    private void SubscribeToStoreOptionEvents()
+    {
+        if (options.Length <= 0) return;
+        foreach (var item in options)
+        {
+            IStoreOption option;
+            item.TryGetComponent<IStoreOption>(out option);
+            if (option != null)
+            {
+                option.OnSelected += SelectOption;
+                storeOptions.Add(option);
+            }
+        }
+        SelectOption(storeOptions[0]);
     }
 
     private void SelectProduct(IProduct product)
@@ -74,6 +104,34 @@ public class StoreController : MonoBehaviour
         }
         selectedProduct = product;
         UIStore.SelectProductUI(product);
+    }
+
+    private void SelectOption(IStoreOption option)
+    {
+        if (selectedOption != null)
+        {
+            selectedOption.Deselect();
+        }
+        selectedOption = option;
+        selectedOption.Select();
+        ChangeProductsSection();
+    }
+
+    private void ChangeProductsSection()
+    {
+        foreach (var item in products)
+        {
+            if (selectedOption.Type == item.ProductInfo.productType)
+            {
+                item.canvasObject.SetActive(true);
+            }
+            else
+            {
+                item.canvasObject.SetActive(false);
+
+            }
+
+        }
     }
 
 }

@@ -7,7 +7,8 @@ namespace Player
     public class PlayerInputHandler : MonoBehaviour
     {
         private CustomPlayerActions input;
-        public static Action<Vector2> OnInput;
+        public static Action<Vector2> OnInputMovement;
+        public static Action OnInputInteraction;
         private void Awake()
         {
             input= new CustomPlayerActions();
@@ -15,25 +16,32 @@ namespace Player
         private void OnEnable()
         {
             input.Enable();
-            input.Player.Movement.performed += HandleInputPerformed;
-            input.Player.Movement.canceled += HandleInputCanceled;
-
+            input.Player.Movement.performed += HandleInputMovementPerformed;
+            input.Player.Movement.canceled += HandleInputMovementCanceled;
+            input.Player.Interact.performed += HandleInputInteractionPerformed;
         }
         private void OnDisable()
         {
             input.Disable();
-            input.Player.Movement.performed -= HandleInputPerformed;
-            input.Player.Movement.canceled -= HandleInputCanceled;
+            input.Player.Movement.performed -= HandleInputMovementPerformed;
+            input.Player.Movement.canceled -= HandleInputMovementCanceled;
+            input.Player.Interact.performed -= HandleInputInteractionPerformed;
         }
     
-        private void HandleInputPerformed(InputAction.CallbackContext context)
+        private void HandleInputMovementPerformed(InputAction.CallbackContext context)
         {
-            OnInput?.Invoke(context.ReadValue<Vector2>());
+            OnInputMovement?.Invoke(context.ReadValue<Vector2>());
         }
-        private void HandleInputCanceled(InputAction.CallbackContext context)
+        private void HandleInputMovementCanceled(InputAction.CallbackContext context)
         {
-            OnInput?.Invoke(Vector2.zero);
+            OnInputMovement?.Invoke(Vector2.zero);
         }
+
+        private void HandleInputInteractionPerformed(InputAction.CallbackContext context)
+        {
+            OnInputInteraction?.Invoke();
+        }
+
     }
 
 }

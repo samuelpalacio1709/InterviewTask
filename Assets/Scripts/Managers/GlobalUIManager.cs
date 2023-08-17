@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
-
+using TMPro;
 public class GlobalUIManager : Singleton<GlobalUIManager>
 {
     [Header("Prompt Message")]
@@ -15,7 +15,15 @@ public class GlobalUIManager : Singleton<GlobalUIManager>
     [SerializeField] Button confirmPromptButton;
     [SerializeField] Button cancelPromptButton;
     [SerializeField] PromptHandler promptHandler;
-    private PromptType actualPromptType= PromptType.Wear;
+
+    [Header("Sticky Message")]
+
+    [SerializeField] GameObject stickyMessageCanvasObject;
+    [SerializeField] TMP_Text stickyMessage;
+
+    private PromptType actualPromptType = PromptType.Wear;
+
+
     public enum PromptType
     {
         Wear
@@ -52,5 +60,14 @@ public class GlobalUIManager : Singleton<GlobalUIManager>
 
     }
 
-  
+    public void ShowStickyMessage(string message)
+    {
+        stickyMessage.text = message;
+        stickyMessageCanvasObject.gameObject.SetActive(true);
+    }
+    public void HideStickyMessage()
+    {
+        stickyMessageCanvasObject.gameObject.SetActive(false);
+    }
+
 }

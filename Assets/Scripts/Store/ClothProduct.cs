@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(UIProductController))]
-public class ClothProduct : MonoBehaviour, IProduct
+public abstract class ClothProduct : MonoBehaviour, IProduct
 {
     public Action<IProduct> onSelected;
     [SerializeField] ProductSO productInfo;
@@ -15,7 +15,7 @@ public class ClothProduct : MonoBehaviour, IProduct
     public ProductSO ProductInfo { 
         get => productInfo;
     }
-
+    public GameObject canvasObject => this.gameObject;
     public Action<IProduct> OnSelected
     {
         get => onSelected;
@@ -47,8 +47,7 @@ public class ClothProduct : MonoBehaviour, IProduct
 
     }
 
-
-
-
+    
+    public abstract void TryProduct();
 
 }

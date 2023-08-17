@@ -4,19 +4,18 @@ using TMPro;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
-using Unity.VisualScripting;
 
 public class UIStoreController : MonoBehaviour
 {
-    [SerializeField] TMP_Text priceText;
-    [SerializeField] TMP_Text productNameText;
-    [SerializeField] Image productImage;
-    [SerializeField] GameObject productPrefab;
-    [SerializeField] Transform productShelf;
-    [SerializeField] Button buyButton;
-    [SerializeField] Button closeButton;
-    [SerializeField] string onPurchasedItemText;
-    [SerializeField] GameObject storeCanvasObject;
+    [SerializeField] public Button closeButton;
+    [SerializeField] private TMP_Text priceText;
+    [SerializeField] private TMP_Text productNameText;
+    [SerializeField] private Image productImage;
+    [SerializeField] private GameObject productPrefab;
+    [SerializeField] private Transform productShelf;
+    [SerializeField] private Button buyButton;
+    [SerializeField] private string onPurchasedItemText;
+    [SerializeField] private GameObject storeCanvasObject;
     public Button BuyButton { get => buyButton; set => buyButton = value; }
     private GlobalUIManager globalUIManager => GlobalUIManager.Instance;
 
@@ -28,7 +27,6 @@ public class UIStoreController : MonoBehaviour
     private void OnDisable()
     {
         closeButton.onClick.RemoveListener(CloseStoreUI);
-
     }
     public void SelectProductUI(IProduct product)
     {
@@ -59,5 +57,10 @@ public class UIStoreController : MonoBehaviour
     public void CloseStoreUI()
     {
         storeCanvasObject.SetActive(false);
+    }
+
+    public void Show()
+    {
+        storeCanvasObject.gameObject.SetActive(true);   
     }
 }
