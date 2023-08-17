@@ -14,8 +14,17 @@ public class GameManager : Singleton<GameManager>
     public static Action<float> onCoinsChanged;
     public float TotalCoins { get => totalCoins; }
 
+    private void OnEnable()
+    {
+        GlobalUIManager.onEndInstructions += StartGame;
+    }
+    private void OnDisable()
+    {
+        GlobalUIManager.onEndInstructions -= StartGame;
+    }
     public enum GameState
     {
+        Init,
         Free,
         Shopping,
     }
@@ -36,5 +45,9 @@ public class GameManager : Singleton<GameManager>
         totalCoins -= coinValue;
         if (totalCoins < 0) totalCoins = 0;
         onCoinsChanged?.Invoke(totalCoins);
+    }
+    public void StartGame()
+    {
+        gameState = GameState.Free;
     }
 }

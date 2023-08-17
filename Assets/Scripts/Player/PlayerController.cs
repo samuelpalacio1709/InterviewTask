@@ -21,7 +21,7 @@ namespace Player
         }
         private void Update()
         {
-            if (gameManager.gameState == GameManager.GameState.Shopping) 
+            if (gameManager.gameState != GameManager.GameState.Free) 
             {
                 playerRigidbody.velocity = Vector2.zero;
                 return;

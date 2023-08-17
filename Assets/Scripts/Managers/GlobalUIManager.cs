@@ -26,14 +26,16 @@ public class GlobalUIManager : Singleton<GlobalUIManager>
     [SerializeField] TMP_Text coinsText;
 
 
-    [Header("Inventary")]
-    [SerializeField] Button sellButton;
-    [SerializeField] Button equipButton;
-    [SerializeField] Button removeButton;
+
+    [Header("Main Menu")]
+    [SerializeField] Button startButton;
+    [SerializeField] Button closeInstructionsButton;
+    [SerializeField] GameObject mainMenuObjectCanvas;
+    [SerializeField] GameObject instructionObjectCanvas;
 
     private PromptType actualPromptType = PromptType.Wear;
 
-
+    public static Action onEndInstructions;
     public enum PromptType
     {
         Wear
@@ -44,6 +46,9 @@ public class GlobalUIManager : Singleton<GlobalUIManager>
         confirmPromptButton.onClick.AddListener(AcceptPrompt);
         cancelPromptButton.onClick.AddListener(CancelPrompt);
         GameManager.onCoinsChanged += UpdateCoinsUI;
+        startButton.onClick.AddListener(HandleStartUI);
+        closeInstructionsButton.onClick.AddListener(HandleEndInstructionsUI);
+
     }
 
     private void OnDisable()
@@ -88,4 +93,14 @@ public class GlobalUIManager : Singleton<GlobalUIManager>
         coinsText.text = coins.ToString();
     }
 
+    private void HandleStartUI()
+    {
+        mainMenuObjectCanvas.SetActive(false);
+    }
+
+    private void HandleEndInstructionsUI()
+    {
+        onEndInstructions?.Invoke();
+        instructionObjectCanvas.gameObject.SetActive(false);
+    }
 }
