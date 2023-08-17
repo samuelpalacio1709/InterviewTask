@@ -10,6 +10,18 @@ public class Store : MonoBehaviour, IInteractable
     public GlobalUIManager globalUIManager => GlobalUIManager.Instance;
     public GameManager gameManager => GameManager.Instance;
     private bool hasVisitors;
+
+    private void OnEnable()
+    {
+        PromptHandler.OnWearItemPrompt += CheckVisitors;
+        PromptHandler.OnWearItemCanceled += CheckVisitors;
+    }
+    private void OnDisable()
+    {
+        PromptHandler.OnWearItemPrompt -= CheckVisitors;
+        PromptHandler.OnWearItemCanceled -= CheckVisitors;
+
+    }
     public void ShowInteraction()
     {
         globalUIManager.ShowStickyMessage(welcomeMessage);
@@ -42,6 +54,14 @@ public class Store : MonoBehaviour, IInteractable
     {
         storeController.OnStoreClosed -= HandleStoreClosed;
         gameManager.ChangeState(GameManager.GameState.Free);
+        CheckVisitors();
+
+    }
+    public void CheckVisitors()
+    {
+
+        gameManager.ChangeState(GameManager.GameState.Free);
+
         if (hasVisitors)
         {
             ShowInteraction();
@@ -50,6 +70,7 @@ public class Store : MonoBehaviour, IInteractable
         {
             HideInteraction();
         }
-
     }
+    
+   
 }

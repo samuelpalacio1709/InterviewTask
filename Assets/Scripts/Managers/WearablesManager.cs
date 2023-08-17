@@ -10,7 +10,7 @@ public class WearablesManager : Singleton<WearablesManager>
     public Material[] characterClothesMaterials;
     public Material[] storeClothesMaterials;
     public Texture blankTexture;
-
+    private string textureName = "_MainTex";
 
     private void Awake()
     {
@@ -42,13 +42,7 @@ public class WearablesManager : Singleton<WearablesManager>
     public void CreateWearable(string id)
     {
         ProductSO productInfo = GetProductInfo(id);
-        IWearable wearable = null;
-        switch(productInfo.productType)
-        {
-            case ProductSO.Type.Head:
-                wearable = new ClothWearable(productInfo);
-                break;
-        }
+        IWearable wearable = new ClothWearable(productInfo);
         wearablesDictionary.Add(productInfo.iD,wearable);
 
     }
@@ -57,11 +51,23 @@ public class WearablesManager : Singleton<WearablesManager>
     {
         foreach (var item in characterClothesMaterials)
         {
-            item.SetTexture("_MainTex", blankTexture);
+            item.SetTexture(textureName, blankTexture);
         }
         foreach (var item in storeClothesMaterials)
         {
-            item.SetTexture("_MainTex", blankTexture);
+            item.SetTexture(textureName, blankTexture);
+        }
+    }
+
+    public void MatchClothes()
+    {
+        for (int i = 0; i < storeClothesMaterials.Length; i++)
+        {
+            var characterMainTexture = characterClothesMaterials[i].
+                                            GetTexture(textureName);
+
+            storeClothesMaterials[i].SetTexture(textureName, characterMainTexture);
+
         }
     }
 

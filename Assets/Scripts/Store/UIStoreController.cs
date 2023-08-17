@@ -14,7 +14,7 @@ public class UIStoreController : MonoBehaviour
     [SerializeField] private GameObject productPrefab;
     [SerializeField] private Transform productShelf;
     [SerializeField] private Button buyButton;
-    [SerializeField] private string onPurchasedItemText;
+    [SerializeField] private string purchasedItemText;
     [SerializeField] private GameObject storeCanvasObject;
     public Button BuyButton { get => buyButton; set => buyButton = value; }
     private GlobalUIManager globalUIManager => GlobalUIManager.Instance;
@@ -49,7 +49,7 @@ public class UIStoreController : MonoBehaviour
     //Show propmt to ask the user if want to wear the purchased item
     public void LaunchPromptToWearNewProduct(IProduct product)
     {
-        string message = onPurchasedItemText.Replace("@product", product.ProductInfo.productName);
+        string message = purchasedItemText.Replace("product", product.ProductInfo.productName);
         storeCanvasObject.SetActive(false);
         globalUIManager.ShowPrompt(message, product.ProductInfo.productIcon);
     }

@@ -57,7 +57,8 @@ public class GlobalUIManager : Singleton<GlobalUIManager>
     }
     public void CancelPrompt()
     {
-
+        promptHandler.HandlePromptRejected();
+        promptCanvasObject.gameObject.SetActive(false);
     }
 
     public void ShowStickyMessage(string message)

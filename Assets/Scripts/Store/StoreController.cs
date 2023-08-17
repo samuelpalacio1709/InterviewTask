@@ -37,12 +37,16 @@ public class StoreController : MonoBehaviour
 
     public void OpenStore()
     {
-        
-        if(products.Count > 0)
-        {
-            UIStore.Show();
-        }
+        wearablesManager.MatchClothes();
 
+        if (selectedProduct != null) 
+            selectedProduct.Deselect();
+
+
+        if (products.Count > 0)
+            UIStore.Show();
+
+        UpgradeProductsSection();
     }
 
     public void CloseStore()
@@ -95,6 +99,7 @@ public class StoreController : MonoBehaviour
 
     private void SelectProduct(IProduct product)
     {
+        product.TryProduct();
         if (product == selectedProduct) return;
 
         if(selectedProduct != null)
@@ -103,7 +108,6 @@ public class StoreController : MonoBehaviour
         }
         selectedProduct = product;
         UIStore.SelectProductUI(product);
-        product.TryProduct();
     }
 
     private void SelectOption(IStoreOption option)
@@ -114,14 +118,15 @@ public class StoreController : MonoBehaviour
         }
         selectedOption = option;
         selectedOption.Select();
-        ChangeProductsSection();
+        UpgradeProductsSection();
     }
 
-    private void ChangeProductsSection()
+    private void UpgradeProductsSection()
     {
         foreach (var item in products)
         {
-            if (selectedOption.Type == item.ProductInfo.productType)
+            if (selectedOption.Type == item.ProductInfo.productType
+                   && !wearablesManager.wearablesDictionary.ContainsKey(item.ProductInfo.iD))
             {
                 item.canvasObject.SetActive(true);
             }

@@ -7,7 +7,6 @@ public class PlayerClothsController : MonoBehaviour
     private WearablesManager wearablesManager => WearablesManager.Instance;
     private PurchaseManager purchaseManager => PurchaseManager.Instance;
 
-
     private void OnEnable()
     {
         PromptHandler.OnWearItemPrompt += WearItem;
