@@ -30,6 +30,7 @@ public class GlobalUIManager : Singleton<GlobalUIManager>
     [Header("Main Menu")]
     [SerializeField] Button startButton;
     [SerializeField] Button closeInstructionsButton;
+    [SerializeField] Button exitApp;
     [SerializeField] GameObject mainMenuObjectCanvas;
     [SerializeField] GameObject instructionObjectCanvas;
 
@@ -48,6 +49,7 @@ public class GlobalUIManager : Singleton<GlobalUIManager>
         GameManager.onCoinsChanged += UpdateCoinsUI;
         startButton.onClick.AddListener(HandleStartUI);
         closeInstructionsButton.onClick.AddListener(HandleEndInstructionsUI);
+        exitApp.onClick.AddListener(HandleExit);
 
     }
 
@@ -102,5 +104,9 @@ public class GlobalUIManager : Singleton<GlobalUIManager>
     {
         onEndInstructions?.Invoke();
         instructionObjectCanvas.gameObject.SetActive(false);
+    }
+    private void HandleExit()
+    {
+        Application.Quit();
     }
 }
