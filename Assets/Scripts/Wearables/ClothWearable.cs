@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeadWearable: IWearable
+public class ClothWearable: IWearable
 {
     ProductSO productInfo;
 
-    public HeadWearable(ProductSO productInfo)
+    public ClothWearable(ProductSO productInfo)
     {
         ProductInfo = productInfo;
     }
@@ -25,7 +25,8 @@ public class HeadWearable: IWearable
 
     public void Wear(Material[]  materials)
     {
-        materials[0].SetTexture("_BaseMap", productInfo.productAtlas);
+        materials[(int)productInfo.productType].
+                    SetTexture("_MainTex", productInfo.productAtlas);
     }
 
 }

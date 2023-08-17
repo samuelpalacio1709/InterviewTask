@@ -7,8 +7,8 @@ using System;
 [RequireComponent(typeof(UIStoreController))]
 public class StoreController : MonoBehaviour
 {
-    [SerializeField] UIStoreController UIStore;
-    [SerializeField] ProductSO[] availableProducts;
+    [SerializeField] private UIStoreController UIStore;
+    [SerializeField] private ProductSO[] availableProducts;
     [SerializeField] private GameObject[] options;
     private WearablesManager wearablesManager => WearablesManager.Instance;
     private PurchaseManager purchaseManager => PurchaseManager.Instance;
@@ -21,6 +21,8 @@ public class StoreController : MonoBehaviour
     {
         CreateProducts();
         SubscribeToStoreOptionEvents();
+        UIStore.BuyButton.onClick.AddListener(BuyProduct);
+        UIStore.closeButton.onClick.AddListener(CloseStore);
     }
     public void BuyProduct()
     {
@@ -38,10 +40,7 @@ public class StoreController : MonoBehaviour
         
         if(products.Count > 0)
         {
-            UIStore.BuyButton.onClick.AddListener(BuyProduct);
             UIStore.Show();
-            UIStore.closeButton.onClick.AddListener(CloseStore);
-
         }
 
     }
@@ -104,6 +103,7 @@ public class StoreController : MonoBehaviour
         }
         selectedProduct = product;
         UIStore.SelectProductUI(product);
+        product.TryProduct();
     }
 
     private void SelectOption(IStoreOption option)

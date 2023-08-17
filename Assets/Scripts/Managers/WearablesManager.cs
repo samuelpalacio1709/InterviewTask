@@ -7,18 +7,23 @@ public class WearablesManager : Singleton<WearablesManager>
     public List<ProductSO> products;
     private Dictionary<string, ProductSO> allProductsDictionary = new Dictionary<string, ProductSO>();
     public Dictionary<string, IWearable> wearablesDictionary = new Dictionary<string, IWearable>();
-    public Material[] clothsMaterials;
+    public Material[] characterClothesMaterials;
+    public Material[] storeClothesMaterials;
     public Texture blankTexture;
 
 
     private void Awake()
     {
+        Init();
+    }
+    private void Init()
+    {
         foreach (var item in products)
         {
             allProductsDictionary.Add(item.iD, item);
         }
+        ResetMaterials();
     }
-
     public ProductSO GetProductInfo(string id)
     {
         ProductSO product;
@@ -41,25 +46,32 @@ public class WearablesManager : Singleton<WearablesManager>
         switch(productInfo.productType)
         {
             case ProductSO.Type.Head:
-                wearable = new HeadWearable(productInfo);
+                wearable = new ClothWearable(productInfo);
                 break;
         }
         wearablesDictionary.Add(productInfo.iD,wearable);
 
     }
 
-    private void OnDisable()
+    private void ResetMaterials()
     {
-        foreach (var item in clothsMaterials)
+        foreach (var item in characterClothesMaterials)
         {
-            item.SetTexture("_BaseMap", blankTexture);
+            item.SetTexture("_MainTex", blankTexture);
+        }
+        foreach (var item in storeClothesMaterials)
+        {
+            item.SetTexture("_MainTex", blankTexture);
         }
     }
 
-
+    private void OnApplicationQuit()
+    {
+        ResetMaterials();
+    }
 
     public void UseWearable(string id)
     {
-        GetWearable(id).Wear(clothsMaterials);
+        GetWearable(id).Wear(characterClothesMaterials);
     }
 }

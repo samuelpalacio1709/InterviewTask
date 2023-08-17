@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4755cc85e961178429fc58ac22d94f2c, type: 3}
   m_Name: Hat_Chirstmas
   m_EditorClassIdentifier: 
+  materialGroup: {fileID: 11400000, guid: e567058795293204e9a9649a985f39b9, type: 2}
   iD: 323132
   productName: White Hat
   productPrice: 200

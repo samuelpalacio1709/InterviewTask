@@ -6,12 +6,14 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(UIProductController))]
-public abstract class ClothProduct : MonoBehaviour, IProduct
+public class ClothProduct : MonoBehaviour, IProduct, IPointerClickHandler
 {
-    public Action<IProduct> onSelected;
     [SerializeField] ProductSO productInfo;
-    [SerializeField] Button button;
     [SerializeField] UIProductController UIProductController;
+
+    public Action<IProduct> onSelected;
+    public WearablesManager wearablesManager => WearablesManager.Instance;
+
     public ProductSO ProductInfo { 
         get => productInfo;
     }
@@ -21,12 +23,10 @@ public abstract class ClothProduct : MonoBehaviour, IProduct
         get => onSelected;
         set => onSelected = value;
     }
-
-    private void OnEnable()
+    public void OnPointerClick(PointerEventData eventData)
     {
-        button.onClick.AddListener(Select);
+        Select();
     }
-
     public void Select()
     {
         Debug.Log("Selected");
@@ -44,10 +44,13 @@ public abstract class ClothProduct : MonoBehaviour, IProduct
     {
         this.productInfo=productInfo;
         UIProductController.UpdateUI(productInfo.productIcon);
-
     }
 
-    
-    public abstract void TryProduct();
+    public void TryProduct()
+    {
+        wearablesManager.storeClothesMaterials[(int)productInfo.productType].
+                    SetTexture("_MainTex", ProductInfo.productAtlas);
+    }
 
+  
 }

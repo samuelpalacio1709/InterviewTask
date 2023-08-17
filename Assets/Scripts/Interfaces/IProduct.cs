@@ -11,7 +11,7 @@ public interface IProduct
 
     public void Select();
     public void Deselect();
-    public abstract void TryProduct();
+    public  void TryProduct();
     public void FillInfo(ProductSO productInfo);
 
 }
