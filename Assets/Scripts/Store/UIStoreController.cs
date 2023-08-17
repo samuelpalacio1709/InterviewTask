@@ -70,5 +70,6 @@ public class UIStoreController : MonoBehaviour
     {
         rejectedText.gameObject.SetActive(state);
     }
+
   
 }

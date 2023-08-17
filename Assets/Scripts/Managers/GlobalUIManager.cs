@@ -37,12 +37,14 @@ public class GlobalUIManager : Singleton<GlobalUIManager>
     {
         confirmPromptButton.onClick.AddListener(AcceptPrompt);
         cancelPromptButton.onClick.AddListener(CancelPrompt);
+        GameManager.onCoinsChanged += UpdateCoinsUI;
     }
 
     private void OnDisable()
     {
         confirmPromptButton.onClick.RemoveAllListeners();
         cancelPromptButton.onClick.RemoveAllListeners();
+        GameManager.onCoinsChanged -= UpdateCoinsUI;
     }
 
 

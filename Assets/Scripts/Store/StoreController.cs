@@ -13,6 +13,7 @@ public class StoreController : MonoBehaviour
     private WearablesManager wearablesManager => WearablesManager.Instance;
     private PurchaseManager purchaseManager => PurchaseManager.Instance;
     private GameManager gameManager => GameManager.Instance;
+
     private List<IProduct> products = new List<IProduct>();
     private List<IStoreOption> storeOptions = new List<IStoreOption>();
     private IProduct selectedProduct;
@@ -32,7 +33,7 @@ public class StoreController : MonoBehaviour
             UIStore.ShowRejectPurchaseText(true);
             return;
         }
-
+        gameManager.DecreaseCoins(selectedProduct.ProductInfo.productPrice);
         purchaseManager.CreatePurchase(selectedProduct);
         UIStore.LaunchPromptToWearNewProduct(selectedProduct);
         wearablesManager.CreateWearable(selectedProduct.ProductInfo.iD);
@@ -60,7 +61,6 @@ public class StoreController : MonoBehaviour
     {
         OnStoreClosed?.Invoke();
         UIStore.ShowRejectPurchaseText(false);
-
     }
 
     public void CreateProducts()
@@ -76,9 +76,7 @@ public class StoreController : MonoBehaviour
             SubscribeToProductEvents(productCreated);
             products.Add(productCreated);
         }
-
     }
-
 
     private void  AddProductInfo(IProduct productCreated, ProductSO productInfo)
     {

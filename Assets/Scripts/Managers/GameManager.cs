@@ -11,7 +11,7 @@ public class GameManager : Singleton<GameManager>
     public Transform playerTranform;
     public GameState gameState= GameState.Free;
     private float totalCoins=0;
-
+    public static Action<float> onCoinsChanged;
     public float TotalCoins { get => totalCoins; }
 
     public enum GameState
@@ -25,9 +25,16 @@ public class GameManager : Singleton<GameManager>
         this.gameState = gameState;
     }
 
-    public float IncreaseCoins(float coinValue)
+    public void IncreaseCoins(float coinValue)
     {
         totalCoins += coinValue;
-        return totalCoins;
+        onCoinsChanged?.Invoke(totalCoins);
+            
+     }
+    public void  DecreaseCoins(float coinValue)
+    {
+        totalCoins -= coinValue;
+        if (totalCoins < 0) totalCoins = 0;
+        onCoinsChanged?.Invoke(totalCoins);
     }
 }

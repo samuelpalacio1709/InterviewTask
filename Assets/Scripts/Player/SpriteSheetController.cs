@@ -38,6 +38,7 @@ namespace Player
         private void OnDisable()
         {
             PlayerInputHandler.OnInputMovement -= ChangeSpriteSheetAnimation;
+            RestartSpriteSheet();
         }
         private void ChangeSpriteSheetAnimation(Vector2 direction)
         {
@@ -105,6 +106,15 @@ namespace Player
                 baseMaterial.SetTextureOffset(textureName, newOffset);
 
             }
+        }
+
+        public void RestartSpriteSheet()
+        {
+            Vector2 newOffset = new Vector2(SpriteFrameSizeX *3,
+                                    SpriteFrameSizeX * (spriteSheetSize.y-1));
+
+            baseMaterial.SetTextureOffset(textureName, newOffset);
+
         }
     }
 }

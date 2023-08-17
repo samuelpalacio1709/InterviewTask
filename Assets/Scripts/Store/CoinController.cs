@@ -6,12 +6,9 @@ public class CoinController : MonoBehaviour, IInteractable
 {
     [SerializeField] float coinValue;
     GameManager gameManager => GameManager.Instance;
-    GlobalUIManager globalUIManager => GlobalUIManager.Instance;
-
     public void Interact()
     {
-        var totalCoins= gameManager.IncreaseCoins(coinValue);
-        globalUIManager.UpdateCoinsUI(totalCoins);
+        gameManager.IncreaseCoins(coinValue);
         this.gameObject.SetActive(false);
     }
 
