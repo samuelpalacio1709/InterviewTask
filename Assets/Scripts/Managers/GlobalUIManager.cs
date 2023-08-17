@@ -25,6 +25,12 @@ public class GlobalUIManager : Singleton<GlobalUIManager>
     [Header("Coins")]
     [SerializeField] TMP_Text coinsText;
 
+
+    [Header("Inventary")]
+    [SerializeField] Button sellButton;
+    [SerializeField] Button equipButton;
+    [SerializeField] Button removeButton;
+
     private PromptType actualPromptType = PromptType.Wear;
 
 
