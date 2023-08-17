@@ -29,4 +29,14 @@ public class ClothWearable: IWearable
                     SetTexture("_MainTex", productInfo.productAtlas);
     }
 
+    public void UnEquip(Material[] materials, Texture blank)
+    {
+        var actualTexture = materials[(int)productInfo.productType].GetTexture("_MainTex");
+        if(actualTexture == ProductInfo.productAtlas)
+        {
+            materials[(int)productInfo.productType].
+                  SetTexture("_MainTex", blank);
+        }
+    }
+
 }

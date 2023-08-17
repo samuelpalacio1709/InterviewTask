@@ -27,6 +27,7 @@ public class GameManager : Singleton<GameManager>
         Init,
         Free,
         Shopping,
+        Inventory,
     }
     public void ChangeState(GameState gameState)
     {

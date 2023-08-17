@@ -1,10 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WearablesManager : Singleton<WearablesManager>
 {
-    [SerializeField] InventoryController inventaryController;
     public List<ProductSO> products;
     private Dictionary<string, ProductSO> allProductsDictionary = new Dictionary<string, ProductSO>();
     public Dictionary<string, IWearable> wearablesDictionary = new Dictionary<string, IWearable>();
@@ -12,7 +12,7 @@ public class WearablesManager : Singleton<WearablesManager>
     public Material[] storeClothesMaterials;
     public Texture blankTexture;
     private string textureName = "_MainTex";
-
+    public Action<IWearable> OnWearableCreated;
     private void Awake()
     {
         Init();
@@ -45,7 +45,7 @@ public class WearablesManager : Singleton<WearablesManager>
         ProductSO productInfo = GetProductInfo(id);
         IWearable wearable = new ClothWearable(productInfo);
         wearablesDictionary.Add(productInfo.iD,wearable);
-        inventaryController.UpdateInventory(wearable);
+        OnWearableCreated?.Invoke(wearable);
     }
 
     private void ResetMaterials()

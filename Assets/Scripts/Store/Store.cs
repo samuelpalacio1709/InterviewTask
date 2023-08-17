@@ -41,7 +41,8 @@ public class Store : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (storeController != null)
+        if (storeController != null 
+            && gameManager.gameState==GameManager.GameState.Free)
         {
             HideMessage();
             storeController.OpenStore();

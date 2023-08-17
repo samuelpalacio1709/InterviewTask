@@ -420,15 +420,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9189376171395423299, guid: 06f055032feb533459cea30de69622b7, type: 3}
   m_PrefabInstance: {fileID: 238782798}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &376311219 stripped
+--- !u!114 &376311220 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6174155445974907050, guid: 145da6b2884c4914496ed0275d438607, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8940478709427651121, guid: 145da6b2884c4914496ed0275d438607, type: 3}
   m_PrefabInstance: {fileID: 2728163022041903556}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2abcfb3b53756334fb0e9c754376b1ae, type: 3}
+  m_Script: {fileID: 11500000, guid: 4795d5e2eca63c148af0be84a77197f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &412159892
@@ -1153,7 +1153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f3aa1652433394fbffd341c617fe9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventaryController: {fileID: 376311219}
   products:
   - {fileID: 11400000, guid: b8638c383a4f743498b43f9b97d3ba3a, type: 2}
   - {fileID: 11400000, guid: 78d136952d9a15840b91d34afdf97b24, type: 2}
@@ -1746,6 +1745,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 106692945}
     m_Modifications:
+    - target: {fileID: 2339832397255205784, guid: 145da6b2884c4914496ed0275d438607, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 53.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339832397255205784, guid: 145da6b2884c4914496ed0275d438607, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -145.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339832397255205784, guid: 145da6b2884c4914496ed0275d438607, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 37.7
+      objectReference: {fileID: 0}
     - target: {fileID: 2728163021529552025, guid: 145da6b2884c4914496ed0275d438607, type: 3}
       propertyPath: m_Name
       value: HUD
@@ -1833,6 +1844,18 @@ PrefabInstance:
     - target: {fileID: 2728163021529552026, guid: 145da6b2884c4914496ed0275d438607, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728163021823611177, guid: 145da6b2884c4914496ed0275d438607, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174155445974907050, guid: 145da6b2884c4914496ed0275d438607, type: 3}
+      propertyPath: inventoryUIController
+      value: 
+      objectReference: {fileID: 376311220}
+    - target: {fileID: 6174155445974907050, guid: 145da6b2884c4914496ed0275d438607, type: 3}
+      propertyPath: lossPercentageProducT
+      value: 0.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 145da6b2884c4914496ed0275d438607, type: 3}

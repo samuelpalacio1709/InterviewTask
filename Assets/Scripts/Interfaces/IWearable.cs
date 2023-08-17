@@ -6,4 +6,5 @@ public interface IWearable
 {
     ProductSO ProductInfo { get; set; }
     public void Wear(Material[] materials);
+    public void UnEquip(Material[] materials, Texture blankTexture);
 }
